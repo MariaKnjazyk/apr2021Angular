@@ -9,6 +9,8 @@ import { UserComponent } from './components/user/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { PostsComponent } from './components/posts/posts.component';
 import {routes} from "./routes/basic.routes";
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {routes} from "./routes/basic.routes";
     UsersComponent,
     UserComponent,
     UserDetailsComponent,
-    PostsComponent
+    PostsComponent,
+    PostDetailsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
