@@ -1,7 +1,15 @@
-<h1>{{title}}</h1>
-<ul>
-  <li><a routerLink="/users">users page</a></li>
-  <li><a routerLink="/posts">posts page</a></li>
-</ul>
+<!--<h1>{{title}}</h1>-->
+<!--<ul>-->
+<!--  <li><a routerLink="/users">users page</a></li>-->
+<!--  <li><a routerLink="/posts">posts page</a></li>-->
+<!--</ul>-->
+
+<!--<router-outlet></router-outlet>-->
+<div id="wraper_top">
+  <div id="top">
+    <button id="usersButton" (click)="navigateToUsersPage()">Users</button>
+    <button id="postsButton" (click)="navigateToPostsPage()">Posts</button>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

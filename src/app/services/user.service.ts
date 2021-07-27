@@ -18,11 +18,11 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<IUser> {
-    return this.httpClient.get<IUser>(this.url+'/'+id)
+    return this.httpClient.get<IUser>(`${this.url}/${id}`)
   }
 
   getUserPostsById(id: number): Observable<IPost[]> {
-    return this.httpClient.get<IPost[]>(this.url+'/'+id+'/posts')
+    return this.httpClient.get<IPost[]>(`${this.url}/${id}/posts`)
   }
 
 }
