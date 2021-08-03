@@ -1,20 +1,8 @@
-<form [formGroup]="myForm" (ngSubmit)="save()">
-  <div>
-    <input type="text" [formControl]="username">
-    <span *ngIf="myForm.controls.username.errors?.required"> input required</span>
-    <span
-      *ngIf="myForm.controls.username.errors?.minlength">min length is - {{myForm.controls.username.errors?.minlength.requiredLength}}
-      , actual length - {{myForm.controls.username.errors?.minlength.actualLength}}</span>
-    <span
-      *ngIf="myForm.controls.username.errors?.maxlength">max length is - {{myForm.controls.username.errors?.maxlength.requiredLength}}
-      , actual length - {{myForm.controls.username.errors?.maxlength.actualLength}}</span>
-
-  </div>
-  <div>
-
-    <input type="text" formControlName="password">
-  </div>
-  <!--  <button [disabled]="myForm.invalid">save</button>-->
-  <button>save</button>
+<form [formGroup]="myForm" (ngSubmit)="userDetails()">
+  <label>Choose user name:
+    <select name="name" [formControl]="id" >
+      <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
+    </select>  </label>
+  <button>details</button>
 
 </form>

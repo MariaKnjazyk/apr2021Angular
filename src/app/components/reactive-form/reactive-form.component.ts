@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {IUser} from "../../models/IUser";
+import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,29 +10,27 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
   styleUrls: ['./reactive-form.component.scss']
 })
 export class ReactiveFormComponent implements OnInit {
-  username = new FormControl("aaa", [Validators.required, Validators.minLength(3), Validators.maxLength(7), this.customValidator]);
-  password = new FormControl("");
+
+  @Input()
+  users: IUser[];
+
+  id = new FormControl('');
 
   myForm: FormGroup = new FormGroup(
     {
-      username: this.username,
-      password: this.password
+      name: this.id,
+
     }
   );
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    // this.userService.getAllUsers().subscribe(value => this.users=value)
   }
 
-  save(){
-    console.log(this.myForm)
+  userDetails(){
+    this.router.navigate(['users',this.id.value], {state: this.users.find(user=> user.id===this.id.value)})
   }
 
-  customValidator(control: AbstractControl) {
-    if(control.value.includes('duck')){
-      return {achtung: 'duck word is present'}
-    }
-    return null;
-  }
 }

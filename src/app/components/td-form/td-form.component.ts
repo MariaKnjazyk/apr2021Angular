@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../services/user.service";
+import {IUser} from "../../models/IUser";
+import {ActivatedRoute, Data, Router} from "@angular/router";
 
 @Component({
   selector: 'app-td-form',
@@ -6,24 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./td-form.component.scss']
 })
 export class TdFormComponent implements OnInit {
+  users: IUser[];
+  id: number;
 
-  user = {
-    username: 'vasya',
-    password: '1111',
-    status: false,
-    gender: "male",
-    level: ['junior', 'middle']
+  constructor(private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
-
-  constructor() { }
 
   ngOnInit(): void {
-  }
+    this.activatedRoute.data.subscribe(({data}) => this.users=data)
+    // this.userService.getAllUsers().subscribe(value => this.users=value)
 
-  save(tref: HTMLFormElement) {
-    console.log(tref.username.value);
-    console.log(tref.password.value);
-    console.log(this.user)
-  }
+  };
 
+
+  userDetails() {
+    this.router.navigate(['users',this.id], {state: this.users.find(user=> user.id===this.id)})
+  }
 }
