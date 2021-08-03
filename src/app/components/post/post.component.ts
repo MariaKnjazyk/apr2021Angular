@@ -17,6 +17,6 @@ export class PostComponent implements OnInit {
   }
 
   navigateToPostDetails(): void {
-    this.router.navigate([this.post.id], {relativeTo: this.activatedRoute})
+    this.router.navigate(['posts', this.post.id], {state: this.post})
   }
 }

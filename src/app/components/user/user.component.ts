@@ -17,11 +17,11 @@ export class UserComponent implements OnInit {
   }
 
   navigateToUserDetails(): void {
-    this.router.navigate([this.user.id], {relativeTo: this.activatedRoute})
+    this.router.navigate(['users', this.user.id], {state: this.user})
   }
 
   navigateToUserDetailsAndPosts(): void {
-    this.router.navigate([ this.user.id, 'user-with-posts'], {relativeTo: this.activatedRoute})
+    this.router.navigate(['users', this.user.id, 'user-with-posts'], {state: this.user})
   }
 
 }

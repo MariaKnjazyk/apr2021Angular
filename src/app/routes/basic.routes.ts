@@ -8,9 +8,7 @@ import {UserDetailsAndPostsComponent} from "../components/user-details-and-posts
 export let routes: Routes =[
   {path: 'users', component: UsersComponent, children:[
       {path: ':id', component: UserDetailsComponent},
-      {path: ':id/user-with-posts', component: UserDetailsAndPostsComponent, children: [
-          {path: ':id', component: PostDetailsComponent}
-        ]},
+      {path: ':id/user-with-posts', component: UserDetailsAndPostsComponent}
     ]},
   {path: 'posts', component: PostsComponent, children:[
       {path: ':id', component: PostDetailsComponent}
