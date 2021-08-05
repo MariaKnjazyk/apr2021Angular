@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {IPost} from "../../models";
 import {ActivatedRoute, Router} from "@angular/router";
-import {PostService} from "../services";
+import {DataService, PostService} from "../services";
 
 @Component({
   selector: 'app-post-details',
@@ -11,21 +11,30 @@ import {PostService} from "../services";
 export class PostDetailsComponent implements OnInit {
   post: IPost;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private postService: PostService) {
+
+
+  constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute, private postService: PostService) {
 
     if (this.router.getCurrentNavigation()?.extras.state) {
       this.activatedRoute.params.subscribe((value) => {
         this.post=this.router.getCurrentNavigation()?.extras.state as IPost;
       })
-    } else {
+      this.activatedRoute.params.subscribe(({id}) => {
+        this.dataService.setNewValue(id);
+      })
+     } else {
       this.activatedRoute.params.subscribe(({id}) => {
         this.postService.getPostById(id).subscribe(value => this.post = value);
+        this.dataService.setNewValue(id);
       })
     }
+
+
   }
 
   ngOnInit(): void {
   }
+
 
 }
 

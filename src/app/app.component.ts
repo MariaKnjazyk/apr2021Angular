@@ -4,20 +4,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
   title = 'apr2021Angular';
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-  }
-
-  navigateToUsersPage(): void {
-    this.router.navigate(['users'])
-  }
-
-  navigateToPostsPage(): void {
-    this.router.navigate(['posts'])
   }
 }

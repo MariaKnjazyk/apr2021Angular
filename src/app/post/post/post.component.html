@@ -1,4 +1,3 @@
 <div class="content">
-  <p>{{post.title}}</p>
-  <button (click)="navigateToPostDetails()">details</button>
+  <span>{{post.id}} --{{post.title}}</span>  <button  [ngClass]="classButton" (click)="navigateToPostDetails()" >details</button>
 </div>
