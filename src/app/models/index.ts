@@ -1,2 +1,2 @@
-export * from './IUser'
-export * from './IPost'
+export * from './user.interface'
+export * from './post.interface'
